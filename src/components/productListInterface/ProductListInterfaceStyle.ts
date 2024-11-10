@@ -1,5 +1,7 @@
 // ProductListInterfaceStyle.ts
 import styled from 'styled-components'
+import { BaseInput, BaseSelect } from '../../styles/SharedStyledComponents'
+import { CONTENT_WIDTH } from '../../styles/SharedStyledComponents'
 
 export const Container = styled.div`
   width: 100%;
@@ -7,7 +9,13 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // border: 1px solid red;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  @media (min-width: 768px) {
+    padding: ${({ theme }) => theme.spacing.sm};
+  }
 `
 
 export const FilterContainer = styled.div`
@@ -15,42 +23,39 @@ export const FilterContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 500px;
-  padding: 1rem;
+  max-width: ${CONTENT_WIDTH.max};
+  min-width: ${CONTENT_WIDTH.min};
+  padding: ${({ theme }) => theme.spacing.sm};
+  
+  @media (min-width: 768px) {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
 `
 
 export const FilterRowContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: ${({ theme }) => theme.spacing.xs};
   width: 100%;
-`
-
-const baseInputStyles = `
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
-
-  &:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-  }
-
-  &:hover {
-    border-color: #999;
+  
+  label {
+    font-size: 0.9rem;
+    
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `
 
-export const FilterSelect = styled.select`
-  ${baseInputStyles}
-  cursor: pointer;
+export const ProductListContainer = styled.div`
+  width: 100%;
+  max-width: ${CONTENT_WIDTH.max};
+  min-width: ${CONTENT_WIDTH.min};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
-export const FilterInput = styled.input`
-  ${baseInputStyles}
-`
+export const FilterSelect = styled(BaseSelect)``
+export const FilterInput = styled(BaseInput)``
+

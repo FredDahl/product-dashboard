@@ -1,15 +1,62 @@
 // ProductListItemStyle.ts
 import styled from 'styled-components'
+import { BaseButton } from '../../styles/SharedStyledComponents'
+import { CONTENT_WIDTH } from '../../styles/SharedStyledComponents'
 
 export const ProductItem = styled.div`
-    border: 2px solid #fff;
-    border-radius: 4px;
-    padding: 20px;
-    margin: 10px 0 20px 0;
+    width: calc(100% - ${({ theme }) => theme.spacing.xs});
+    max-width: ${CONTENT_WIDTH.max};
+    min-width: auto;
+    border: 2px solid ${({ theme }) => theme.colors.border};
+    border-radius: ${({ theme }) => theme.borderRadius.small};
+    padding: ${({ theme }) => theme.spacing.xs};
+    margin: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.xs};
     position: relative;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    
+    @media (min-width: 768px) {
+        width: 100%;
+        padding: ${({ theme }) => theme.spacing.lg};
+        margin: ${({ theme }) => theme.spacing.sm} 0;
+        min-width: ${CONTENT_WIDTH.min};
+    }
+`
 
-    button:hover {
-      background-color: #ff0000;
+export const ProductItemContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    padding-right: ${({ theme }) => theme.spacing.xl};
+`
+
+export const ProductItemTitle = styled.h3`
+    margin-top: 0;
+`
+
+export const ProductItemDescription = styled.p`
+    margin-top: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    
+    &::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari, Opera */
+    }
+    
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        padding-right: ${({ theme }) => theme.spacing.md};
     }
 `
 
@@ -27,11 +74,13 @@ export const ModalOverlay = styled.div`
 `
 
 export const ModalContent = styled.div`
-  background-color: #2a2a2a;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+  background-color: ${({ theme }) => theme.colors.background};
+  padding: ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  width: 90%;
+  max-width: 300px;
   text-align: center;
+  margin: 0 ${({ theme }) => theme.spacing.sm};
 
   h3 {
     margin-top: 0;
@@ -40,44 +89,45 @@ export const ModalContent = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-  }
-
-  input, textarea {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #333;
-    color: white;
-  }
-
-  textarea {
-    min-height: 100px;
-    resize: vertical;
+    gap: ${({ theme }) => theme.spacing.sm};
+    margin-top: ${({ theme }) => theme.spacing.md};
   }
 
   .button-group {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
+    gap: ${({ theme }) => theme.spacing.xl};
+    margin-top: ${({ theme }) => theme.spacing.lg};
   }
+`
 
-  button {
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    
-    &.confirm {
-      background-color: #4444ff;
-      color: white;
-    }
-    
-    &.cancel {
-      background-color: #666;
-      color: white;
-    }
+export const ModalButton = styled(BaseButton)`
+  &.confirm {
+    background-color: ${({ theme }) => theme.colors.primary};
   }
+  
+  &.cancel {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
+`
+
+export const IconButton = styled(BaseButton)`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: ${({ theme }) => theme.spacing.xs};
+`
+
+export const DeleteButton = styled(IconButton)`
+  right: ${({ theme }) => theme.spacing.xs};
+  background-color: ${({ theme }) => theme.colors.danger};
+`
+
+export const EditButton = styled(IconButton)`
+  right: calc(${({ theme }) => theme.spacing.xs} + 32px);
+  background-color: ${({ theme }) => theme.colors.primary};
 `

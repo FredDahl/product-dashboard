@@ -6,9 +6,11 @@ import AddProduct from '../addProduct/AddProduct'
 // Interfaces
 import * as I from '../../interfaces/interfaces'
 // Styled Components
-import { Container, FilterContainer, FilterRowContainer, FilterSelect, FilterInput } from './ProductListInterfaceStyle'
+import { Container, FilterContainer, FilterRowContainer, FilterSelect, FilterInput, ProductListContainer } from './ProductListInterfaceStyle'
 // Mockup Data
 import { products as initialProducts } from '../../mockupData/mockupData';
+// Imported Hooks
+import { useProductFilters } from '../../hooks/UseProductFilters';
 
 function ProductListInterface() {
   const [products, setProducts] = useState<I.Product[]>(initialProducts);
@@ -30,20 +32,12 @@ function ProductListInterface() {
   };
 
   // Filter products based on selected category
-  const filteredProducts = useMemo(() => {
-    return products.filter(product => {
-      // Category filter
-      const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-
-      // Name filter (case-insensitive)
-      const matchesName = product.name.toLowerCase().includes(nameFilter.toLowerCase());
-
-      // Price filter (less than or equal to entered price)
-      const matchesPrice = !priceFilter || product.price <= Number(priceFilter);
-
-      return matchesCategory && matchesName && matchesPrice;
-    });
-  }, [products, selectedCategory, nameFilter, priceFilter]);
+  const filteredProducts = useProductFilters({
+    products,
+    selectedCategory,
+    nameFilter,
+    priceFilter
+  });
 
   const handleDeleteProduct = (productToDelete: I.Product) => {
     setProducts(products.filter(product => product !== productToDelete));
@@ -105,7 +99,7 @@ function ProductListInterface() {
         </FilterRowContainer>
       </FilterContainer>
 
-      <div>
+      <ProductListContainer>
         {filteredProducts.map((product, index) => (
           <ProductListItem
             key={index}
@@ -114,7 +108,7 @@ function ProductListInterface() {
             onUpdate={handleUpdateProduct}
           />
         ))}
-      </div>
+      </ProductListContainer>
     </Container>
   )
 }
