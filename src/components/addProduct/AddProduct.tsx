@@ -14,11 +14,36 @@ function AddProduct({ onAddProduct }: AddProductProps) {
     category: '',
     description: ''
   });
+  const [error, setError] = useState<string>('');
+
+  const validateForm = (): boolean => {
+    if (!product.name.trim()) {
+      setError('Product name is required');
+      return false;
+    }
+    if (product.price <= 0) {
+      setError('Price must be greater than 0');
+      return false;
+    }
+    if (!product.category.trim()) {
+      setError('Category is required');
+      return false;
+    }
+    if (!product.description.trim()) {
+      setError('Description is required');
+      return false;
+    }
+    setError('');
+    return true;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAddProduct(product);
-    setProduct({ name: '', price: 0, category: '', description: '' });
+    if (validateForm()) {
+      onAddProduct(product);
+      setProduct({ name: '', price: 0, category: '', description: '' });
+      setError('');
+    }
   };
 
   return (
@@ -48,7 +73,8 @@ function AddProduct({ onAddProduct }: AddProductProps) {
           value={product.description}
           onChange={(e) => setProduct({...product, description: e.target.value})}
         />
-        <button type="submit">Add Product</button>
+        <button type="submit" style={{ fontWeight: 'bold' }}>Add Product</button>
+        {error && <p style={{ color: 'red', fontWeight: 'bold', margin: '10px 0 0' }}>{error}</p>}
       </form>
     </AddProductContainer>
   );

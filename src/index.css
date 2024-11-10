@@ -5,7 +5,18 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(
+    90deg,
+    #3a3a3a 0%,
+    #3a3a3a 5%,
+    #4e4e4e 25%,
+    #4e4e4e 75%,
+    #3a3a3a 95%,
+    #3a3a3a 100%
+  );
+
+  
+  min-height: 100vh;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

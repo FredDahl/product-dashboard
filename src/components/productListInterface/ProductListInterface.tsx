@@ -33,6 +33,10 @@ function ProductListInterface() {
     return products.filter(product => product.category === selectedCategory);
   }, [products, selectedCategory]);
 
+  const handleDeleteProduct = (productToDelete: I.Product) => {
+    setProducts(products.filter(product => product !== productToDelete));
+  };
+
   return (
     <Container>
       <h1>Product List</h1>
@@ -45,7 +49,7 @@ function ProductListInterface() {
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
           {categories.map(category => (
-            <option key={category} value={category}>
+            <option key={category} value={category} >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </option>
           ))}
@@ -57,6 +61,7 @@ function ProductListInterface() {
           <ProductListItem 
             key={index}
             product={product}
+            onDelete={() => handleDeleteProduct(product)}
           />
         ))}
       </div>
