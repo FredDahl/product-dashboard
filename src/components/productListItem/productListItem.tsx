@@ -1,8 +1,8 @@
-// productListItem.tsx
+// ProductListItem.tsx
 // Interfaces
 import * as I from "../../interfaces/interfaces"
 // Styled Components
-import { ProductItem } from './productListItemStyle'
+import { ProductItem } from './ProductListItemStyle'
 
   function ProductListItem({ product }: { product: I.Product }) {
     return (

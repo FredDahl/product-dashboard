@@ -1,7 +1,7 @@
-// template.tsx
+// Template.tsx
 import { useState } from 'react'
 // Styled Components
-import { Container } from './templateStyle'
+import { Container } from './TemplateStyle'
 
 function Template() {
   const [count, setCount] = useState(0)

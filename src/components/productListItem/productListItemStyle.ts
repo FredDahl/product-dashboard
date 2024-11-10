@@ -1,4 +1,4 @@
-// productListItemStyle.ts
+// ProductListItemStyle.ts
 import styled from 'styled-components'
 
 export const ProductItem = styled.div`

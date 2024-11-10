@@ -1,5 +1,5 @@
 // App.tsx
-import ProductList from './components/productList/productListInterface'
+import ProductList from './components/productListInterface/ProductListInterface'
 // CSS
 import './App.css'
 
