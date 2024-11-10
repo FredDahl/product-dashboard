@@ -60,8 +60,15 @@ function AddProduct({ onAddProduct }: AddProductProps) {
         <input
           type="number"
           placeholder="Price"
-          value={product.price}
+          value={product.price || ''}
+          onFocus={() => product.price === 0 && setProduct({...product, price: null as any})}
           onChange={(e) => setProduct({...product, price: Number(e.target.value)})}
+          // Prevents the user from entering 'e' or 'E' (HTML type="number") in the price input
+          onKeyDown={(e) => {
+            if (e.key === 'e' || e.key === 'E') {
+              e.preventDefault();
+            }
+          }}
         />
         <input
           type="text"
