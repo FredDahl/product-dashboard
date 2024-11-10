@@ -9,6 +9,7 @@ interface AddProductProps {
 
 function AddProduct({ onAddProduct }: AddProductProps) {
   const [product, setProduct] = useState<I.Product>({
+    id: 0,
     name: '',
     price: 0,
     category: '',
@@ -41,7 +42,7 @@ function AddProduct({ onAddProduct }: AddProductProps) {
     e.preventDefault();
     if (validateForm()) {
       onAddProduct(product);
-      setProduct({ name: '', price: 0, category: '', description: '' });
+      setProduct({ id: 0, name: '', price: 0, category: '', description: '' });
       setError('');
     }
   };

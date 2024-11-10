@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AddProductContainer = styled.div`
   width: 100%;
   max-width: 500px;
-  margin: 20px auto;
+  // margin: 20px auto;
   padding: 20px;
 
   form {

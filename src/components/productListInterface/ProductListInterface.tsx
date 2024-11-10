@@ -37,6 +37,14 @@ function ProductListInterface() {
     setProducts(products.filter(product => product !== productToDelete));
   };
 
+  // Updates a single product in the products array by matching IDs.
+  // Creates a new array with the updated product replacing the old one.
+  const handleUpdateProduct = (updatedProduct: I.Product) => {
+    setProducts(products.map(product => 
+      product.id === updatedProduct.id ? updatedProduct : product
+    ));
+  };
+
   return (
     <Container>
       <h1>Product List</h1>
@@ -62,6 +70,7 @@ function ProductListInterface() {
             key={index}
             product={product}
             onDelete={() => handleDeleteProduct(product)}
+            onUpdate={handleUpdateProduct}
           />
         ))}
       </div>

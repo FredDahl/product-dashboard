@@ -37,6 +37,26 @@ export const ModalContent = styled.div`
     margin-top: 0;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  input, textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
   .button-group {
     display: flex;
     justify-content: center;
@@ -51,7 +71,7 @@ export const ModalContent = styled.div`
     border: none;
     
     &.confirm {
-      background-color: #ff4444;
+      background-color: #4444ff;
       color: white;
     }
     
