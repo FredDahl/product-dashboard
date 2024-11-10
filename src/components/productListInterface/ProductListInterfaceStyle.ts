@@ -1,7 +1,8 @@
 // ProductListInterfaceStyle.ts
 import styled from 'styled-components'
 import { BaseInput, BaseSelect } from '../../styles/SharedStyledComponents'
-import { CONTENT_WIDTH } from '../../styles/SharedStyledComponents'
+import { mediaQuery } from '../../styles/MediaQueries';
+import { CONTENT_WIDTH } from '../../styles/Layout';
 
 export const Container = styled.div`
   width: 100%;
@@ -13,7 +14,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   
-  @media (min-width: 768px) {
+  ${mediaQuery.tablet} {
     padding: ${({ theme }) => theme.spacing.sm};
   }
 `
@@ -23,11 +24,11 @@ export const FilterContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: ${CONTENT_WIDTH.max};
-  min-width: ${CONTENT_WIDTH.min};
+  max-width: ${CONTENT_WIDTH.MAX};
+  min-width: ${CONTENT_WIDTH.MIN};
   padding: ${({ theme }) => theme.spacing.sm};
   
-  @media (min-width: 768px) {
+  ${mediaQuery.tablet} {
     padding: ${({ theme }) => theme.spacing.lg};
   }
 `
@@ -41,7 +42,7 @@ export const FilterRowContainer = styled.div`
   label {
     font-size: 0.9rem;
     
-    @media (min-width: 768px) {
+    ${mediaQuery.tablet} {
       font-size: 1rem;
     }
   }
@@ -49,8 +50,8 @@ export const FilterRowContainer = styled.div`
 
 export const ProductListContainer = styled.div`
   width: 100%;
-  max-width: ${CONTENT_WIDTH.max};
-  min-width: ${CONTENT_WIDTH.min};
+  max-width: ${CONTENT_WIDTH.MAX};
+  min-width: ${CONTENT_WIDTH.MIN};
   display: flex;
   flex-direction: column;
   align-items: center;

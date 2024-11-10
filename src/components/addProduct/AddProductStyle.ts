@@ -1,3 +1,4 @@
+// AddProductStyle.ts
 import styled from 'styled-components';
 import { CONTENT_WIDTH } from '../../styles/SharedStyledComponents';
 

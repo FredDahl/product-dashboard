@@ -1,11 +1,13 @@
 // ProductListItemStyle.ts
 import styled from 'styled-components'
 import { BaseButton } from '../../styles/SharedStyledComponents'
-import { CONTENT_WIDTH } from '../../styles/SharedStyledComponents'
+import { CONTENT_WIDTH } from '../../styles/Layout'
+import { mediaQuery } from '../../styles/MediaQueries'
+import { Z_INDEX } from '../../styles/Layout'
 
 export const ProductItem = styled.div`
     width: calc(100% - ${({ theme }) => theme.spacing.xs});
-    max-width: ${CONTENT_WIDTH.max};
+    max-width: ${CONTENT_WIDTH.MAX};
     min-width: auto;
     border: 2px solid ${({ theme }) => theme.colors.border};
     border-radius: ${({ theme }) => theme.borderRadius.small};
@@ -16,22 +18,23 @@ export const ProductItem = styled.div`
     overflow-wrap: break-word;
     word-wrap: break-word;
     
-    @media (min-width: 768px) {
+    ${mediaQuery.tablet} {
         width: 100%;
         padding: ${({ theme }) => theme.spacing.lg};
         margin: ${({ theme }) => theme.spacing.sm} 0;
-        min-width: ${CONTENT_WIDTH.min};
+        min-width: ${CONTENT_WIDTH.MIN};
     }
 `
 
 export const ProductItemContent = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    // align-items: center;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    text-align: center;
-    padding-right: ${({ theme }) => theme.spacing.xl};
+
 `
 
 export const ProductItemTitle = styled.h3`
@@ -56,6 +59,7 @@ export const ProductItemDescription = styled.p`
     @media (max-width: 768px) {
         font-size: 0.9rem;
         line-height: 1.4;
+        padding-left: ${({ theme }) => theme.spacing.md};
         padding-right: ${({ theme }) => theme.spacing.md};
     }
 `
@@ -70,7 +74,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: ${Z_INDEX.MODAL};
 `
 
 export const ModalContent = styled.div`
