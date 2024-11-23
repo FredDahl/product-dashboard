@@ -12,7 +12,8 @@ import {
   ModalContent, 
   DeleteButton, 
   EditButton, 
-  ModalButton 
+  ModalButton,
+  ProductItemContainer
 } from './ProductListItemStyle'
 import { BaseInput, BaseTextArea } from '../../styles/SharedStyledComponents'
 
@@ -47,8 +48,9 @@ function ProductListItem({ product, onDelete, onUpdate }: ProductListItemProps) 
   };
 
   return (
-    <ProductItem>
-      <DeleteButton onClick={handleDeleteClick}>
+    <ProductItemContainer>
+      <ProductItem>
+        <DeleteButton onClick={handleDeleteClick}>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
         </svg>
@@ -102,7 +104,7 @@ function ProductListItem({ product, onDelete, onUpdate }: ProductListItemProps) 
 
       {showModal && (
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent>  
             <h3>Confirm Delete</h3>
             <p>Are you sure you want to delete "{product.name}"?</p>
             <div className="button-group">
@@ -112,7 +114,8 @@ function ProductListItem({ product, onDelete, onUpdate }: ProductListItemProps) 
           </ModalContent>
         </ModalOverlay>
       )}
-    </ProductItem>
+      </ProductItem>
+    </ProductItemContainer>
   );
 }
 

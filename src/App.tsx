@@ -1,5 +1,5 @@
 // App.tsx
-import ProductList from './components/productListInterface/ProductListInterface'
+import ProductListInterface from './components/productListInterface/ProductListInterface'
 // Styled Components
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/Theme';
@@ -11,7 +11,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div className="container">
-      <ProductList />
+      <ProductListInterface />
     </div>
   </ThemeProvider>
   )

@@ -14,7 +14,7 @@ const baseInputStyles = css`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: 1rem;
   background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.secondary};
   transition: border-color 0.2s ease;
 
   &:focus {

@@ -5,10 +5,27 @@ import { CONTENT_WIDTH } from '../../styles/Layout'
 import { mediaQuery } from '../../styles/MediaQueries'
 import { Z_INDEX } from '../../styles/Layout'
 
+export const ProductItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: ${CONTENT_WIDTH.MAX};
+  min-width: ${CONTENT_WIDTH.MIN};
+  padding: ${({ theme }) => theme.spacing.sm};
+  
+  ${mediaQuery.tablet} {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
+`
+
 export const ProductItem = styled.div`
     width: calc(100% - ${({ theme }) => theme.spacing.xs});
     max-width: ${CONTENT_WIDTH.MAX};
     min-width: auto;
+    // Height is set to 100% to ensure that the product items keep the same height, might need to be adjusted
+    // if some the product description is very long
+    height: 100%;
     border: 2px solid ${({ theme }) => theme.colors.border};
     border-radius: ${({ theme }) => theme.borderRadius.small};
     padding: ${({ theme }) => theme.spacing.xs};
@@ -30,7 +47,6 @@ export const ProductItemContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
